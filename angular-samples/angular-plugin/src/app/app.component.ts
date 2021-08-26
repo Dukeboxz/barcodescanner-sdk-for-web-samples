@@ -5,7 +5,7 @@ import { Barcode, BarcodePicker, Camera, CameraAccess, CameraSettings, ScanResul
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"],
+  styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
   public activeSettings: ScanSettings;
@@ -34,19 +34,19 @@ export class AppComponent {
 
   constructor() {
     this.settings128 = new ScanSettings({
-      enabledSymbologies: [Barcode.Symbology.CODE128],
+      enabledSymbologies: [Barcode.Symbology.CODE128]
     });
     this.settings39 = new ScanSettings({
-      enabledSymbologies: [Barcode.Symbology.CODE39],
+      enabledSymbologies: [Barcode.Symbology.CODE39]
     });
     this.activeSettings = this.settings128;
 
-    CameraAccess.getCameras().then((cameras) => {
+    CameraAccess.getCameras().then(cameras => {
       this.possibleCameras = cameras;
     });
 
     this.cameraSettings = {
-      resolutionPreference: CameraSettings.ResolutionPreference.FULL_HD,
+      resolutionPreference: CameraSettings.ResolutionPreference.FULL_HD
     };
   }
 

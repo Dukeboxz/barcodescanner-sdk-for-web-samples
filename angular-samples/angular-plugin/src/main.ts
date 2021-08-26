@@ -5,4 +5,4 @@ import { AppModule } from "./app/app.module";
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
   // tslint:disable-next-line:ter-arrow-body-style
-  .catch((err) => console.log(err));
+  .catch(err => console.log(err));
