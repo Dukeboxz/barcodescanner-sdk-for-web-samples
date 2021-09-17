@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="logo"></div>
+  <div class="name">Simple Sample</div>
+  <div id="description" class="description" *ngIf="showDescription">
+    Start the scanner and then aim at a barcode to get the encoded data.
+  </div>
+
+  <div id="lib-loading" *ngIf="!scannerReady">
+    <br />Library is loading, please wait...
+  </div>
+
+  <button id="barcode-picker-starter-button" *ngIf="showButton" (click)="startBarcodePicker()">
+    Start Scanning
+  </button>
+
+  <div id="barcode-result" class="result-text">{{ result }}</div>
+
+  <scandit-barcode-picker
+    #barcodePicker
+    id="barcode-picker"
+    configure.licenseKey="AYBQWQbyJvN6DFpsuDgz/cIdIvvrMIv3zQFC6JgvnP3TT/zcGVX8LipG4wusZK8zTXnFYXZbu823dYUDb0vcY9BvLGdYYs/dPHA1AShAQh9QHsAxoQihFKoM+oWqBcoqkicJUBZD6w1cu9ZjFHhlKsSzsSdn8Se84epYW1vy0euBW0CaNxrIho73ZC8YFRnnbAR6shAc8CbZP3+bSDwqhFhwIQ2d27n+fJ3sOo8W3PchCENkhaECGwvyIDtQLLUXbkzVNGabkXbRGmuHz4wF98lqAZBWg11odARHcYCHdeMT/HjoNALhVDfMwLp44oOKFJ9cu/Wmz59oGD7fEuMNjNirVBJlTJx6S07e7Ek2hA9LhDRCyUgydB9cSgsAOD92oidBZ7RwtY86cYV0148YDpgDI6Y5FUStVxERHIeiq/8teluKWyfqtZMVjyg81DMNrEZk3o5ytURstzhtums1YGzgyqUqfCd6UsMkIvWUsSgmZH7j4i8HeQ8/+t4yhmnJhQ8l5hdMs8yAulJbAkrQ3mHvDtyHTnYFVTagmpfnNBUJFmZ0UlannOTbp1YBMOSossPguZitSdPHccVevH1j53N4U4G+6evspqidFdmZMYbPJH6/vZP8rIK65p6a8p2VqC9D5/+5zPiJKZ1qLJ4veJqf+CTdl9pV21A8pyfyK8tNX1DKVRqNiY41sOB4JeMSx1raKhIuS73rENCeVulHajxXvBMQx8SGfSL/Fg21DXhzp0AQjrSDt7JqT+15vQaL2RusECMe0TmDRFWrH1Bq5o1AwqE2Nzww5wI4Oge0dA=="
+    configure.engineLocation="https://cdn.jsdelivr.net/npm/scandit-sdk@5.x/build/"
+    scanningPaused="true"
+    visible="false"
+    playSoundOnScan="true"
+    vibrateOnScan="true"
+    scanSettings.enabledSymbologies='["ean13"]'
+    (ready)="onReady()"
+    (scan)="onScan($event)">
+  </scandit-barcode-picker>
+</div>
