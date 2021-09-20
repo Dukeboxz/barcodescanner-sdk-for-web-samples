@@ -1,1 +1,11 @@
-<p>dashboard works!</p>
+<div class="container">
+    <div class="row">
+        <h4>Choose Location</h4>
+        <select name="" id="locationSelect" class="browser-default custom-select">
+            <option *ngFor="let location of locations" value={{location.locationId}}>{{location.locationCode}}</option>
+        </select>
+    </div>
+    <div class="row">
+        <button type="button" class="btn btn-primary">Book in delivery</button>
+    </div>
+</div>
