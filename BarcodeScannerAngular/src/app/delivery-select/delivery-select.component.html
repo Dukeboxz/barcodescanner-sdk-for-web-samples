@@ -1,0 +1,16 @@
+<div class="container">
+    <h3>Select Delivery</h3>
+    <div class="row">
+        <div *ngFor="let delivery of deliveries" class="card" style="width: 18rem;">
+        
+            <div class="card-body">
+              <h5 class="card-title">Box ID: {{delivery.BoxId}}</h5>
+              <p class="card-text">Total Qty:  {{delivery.TotalQty}}</p>
+              <p class="card-text">Item Count:  {{delivery.ItemCount}}</p>
+              <a (click)="SelectDelivery(delivery)" class="btn btn-primary">Select Delivery</a>
+              <a (click)="AcceptDelivery(delivery)" class="btn btn-primary">Accept Delivery</a>
+            </div>
+          </div>
+    </div>
+   
+</div>

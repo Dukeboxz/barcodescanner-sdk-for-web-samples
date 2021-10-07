@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="logo"></div>
+  <div class="name">Simple Sample</div>
+  <div id="description" class="description" *ngIf="showDescription">
+    Start the scanner and then aim at a barcode to get the encoded data.
+  </div>
+
+  <div id="lib-loading" *ngIf="!scannerReady">
+    <br />Library is loading, please wait...
+  </div>
+
+  <button id="barcode-picker-starter-button" *ngIf="showButton" (click)="startBarcodePicker()">
+    Start Scanning
+  </button>
+
+  <div id="barcode-result" class="result-text">{{ result }}</div>
+
+  <scandit-barcode-picker
+    #barcodePicker
+    id="barcode-picker"
+    configure.licenseKey="ARNAbijQCE7bEFujfh+FQ94sXhF6A9oki1SifmhIwWdJQoSkKHXX7cYDVoVWbAiQi1ZCTAsNINvEbhe+b33KqMdeHNBJKR4IV1Xu3fFpS4sIMaiLSCbIulsn2zRNM72nrdlzS+NoDo2SgQ8Yp+N5ogNIMeZTuKDmA04x6lNSxrcHRX4Ql/TaDxEQG3nWD++kw1k43wRkEmSqoDqxYa9VSBSHw9ke1XeEymAkBjO5FU0vLcPv5K8Xx1W44dq0RORWTqytBYdSBoSZzW4YU7SC46rv2jC3+B/74tLuO5ctZ+DEF5QU/5mcfjtnPaPhg6dyd613hCcD79tZU+GaG46ZSipiAq7xD6FK+PSRSI463pPvFN9l5pdUxvM3G06HyAkOUVxS3/zaaTSAOdNcvhABPQJEiAkih/J/LrsZ3BMX5gsHfIa9WPp3AjJ16WBCtR537Pt/NFR7RQDoAOcygjshsua4XgWR5byNrnxp7Unbo17BID8BC6+rQRU/jomV0hv8VsN2KaYIwCBsSTjxPqh0jHBIzUG6jQgL7uLcw8aexbByuA8KDJqX5GEk9CFFgKD6aqTWMsD8pWUb0MX0BITrLr3eawzqMk1QLUBtJirgcejkctpLJhbyaTIpOtLX97c2sixs0vUTejDpjk55C2rU711g58M1dK4zibPT7d1QMPewvCRFPa0SMYwXW4eospHf06SofXFSvMS9vf/YTr7Ye/xoZSaS/rcg1FXnCkZ7Wt7Qufp8dKeIfkAiBSUdeyHyOBH6Qid3Ac+CzY5bYPXyU8NPjzF+Un3yJdfghHgU9g=="
+    configure.engineLocation="https://cdn.jsdelivr.net/npm/scandit-sdk@5.x/build/"
+    scanningPaused="true"
+    visible="false"
+    playSoundOnScan="true"
+    vibrateOnScan="true"
+    scanSettings.enabledSymbologies='["ean13"]'
+    (ready)="onReady()"
+    (scan)="onScan($event)">
+  </scandit-barcode-picker>
+
+  <div>
+    <table class="table" class="table" id="selectedTransactionTable" style="width:100%">
+      <tr>
+        <th>Product</th>
+        <th>Colour</th>
+        <th>Size</th>
+        <th>Qty</th>
+      </tr>
+      <tr *ngFor="let sample of scannedSamples">
+        <td>{{sample.Style}}</td>
+        <td>{{sample.Colour}}</td>
+        <td>{{sample.Sty_size}}</td>
+        <td>{{sample.Qty}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

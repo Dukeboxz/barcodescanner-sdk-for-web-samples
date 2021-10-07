@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="logo"></div>
+    <div class="name">Simple Sample</div>
+    <div id="description" class="description" *ngIf="showDescription">
+      Start the scanner and then aim at a barcode to get the encoded data.
+    </div>
+  
+    <div id="lib-loading" *ngIf="!scannerReady">
+      <br />Scanner is loading, please wait...
+    </div>
+  
+    <button id="barcode-picker-starter-button" *ngIf="showButton" (click)="startBarcodePicker()">
+      Start Scanning
+    </button>
+  
+    <div id="barcode-result" class="result-text">{{ result }}</div>
+  
+    <scandit-barcode-picker
+      #barcodePicker
+      id="barcode-picker"
+      configure.licenseKey="AbSQARTyNMdSIJKYxj4Nlucp58OiO9Kd+nBFuT1H6RaUIQtaJXBwf5trUkFTccxQK1bFadJkNJCSUgU2TgZE0JxXZYyLXTCsGUsYUTdOsbyzfhi8sBKdi8NKE8gTICUy4lEFHzh3kwWuEmfzTB98WdpCmiCUGLS0Oo38TV/Xxk9FgyfO6us7H1d+co6tdt1+BAE1FKrhDK4LIXVBzxHh3ua6t7fa8+G+7udchaAkucErI3IOhaI489/7EA+1/DQHXyR7NaxzDu85F8rrqZEh8WFdAylzTzPUiuCpqZo/N/q8wo1gUp3zQjhNH1eSziKo1ev6SXHKADEwLKQ/n5atpKOkub2KZlWVgkGwUiWPFQNuZDjuM0Hfllhj9gjCRpxnjOPisAbHicVRZ1VCuRlIZOvkMJ7nNX9wX138RcA9LuPSSOl9ljj5EBvyaB4iSd0Ol6cj5S6XqEiGvB+JaVbOMVz5sQKKKP2ui+t84gaJtbEeftjO2EY7qA0ReMA0Nk10v3d8hkgtXtqvKNWzK5eYZerXkZ+kWG6zO+f7Zu0WVt6d6GhDhz1vbiVNg3kW26g32wtCJr15w6Cyp8KnKwmxHwCp4lJd/zPONLDkvS0kYhcBF+78sQeM+V5uxUqtq5HUsbS69PqEk6X+LsNZJ+DUDepprxnEZXRf98wlRZwkUz/lEMwmPF3cs12nK1h4ZoT4STxbVuQzDp2VyUunTwcAGvuX8hUdjyXCwdU5O+RWxmRB47eSWANsd4mRrwb+AYvRW+LuUlJXF96R4cLS+84uYfbsKljJdwUxv8UPZstva+Olzwvgh2Y9qpRwC7RoReWQR2l/ki2CdKWS"
+      configure.engineLocation="https://cdn.jsdelivr.net/npm/scandit-sdk@5.x/build/"
+      scanningPaused="true"
+      visible="false"
+      playSoundOnScan="true"
+      vibrateOnScan="true"
+      scanSettings.enabledSymbologies='["ean13"]'
+      (ready)="onReady()"
+      (scan)="onScan($event)">
+    </scandit-barcode-picker>
+  
+    <button (click)="scanTest()">Test Scan</button>
+    <div>
+      <table class="table" class="table" id="selectedTransactionTable" style="width:100%">
+        <tr>
+          <th>Product</th>
+          <th>Colour</th>
+          <th>Size</th>
+          <th>Qty</th>
+        </tr>
+        <tr *ngFor="let item of scannedDeliveryItems">
+          <td>{{item.Product}}</td>
+          <td>{{item.Colour}}</td>
+          <td>{{item.Size}}</td>
+          <td>{{item.AcceptQty}}</td>
+        </tr>
+      </table>
+
+      <button class="btn btn-primary" [disabled]="UpdateDiabled" (click)="UpdateDelivery()">BookInDelivery</button>
+    </div>
+  </div>
+  

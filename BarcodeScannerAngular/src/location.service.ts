@@ -8,11 +8,11 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class LocationService {
 
-  GetLocationsUrl = 'https://pssamples-transfers.azurewebsites.net/api/GetAllLocations?code=A6A77QyKGGGEaewbJj4Qvk6qMWpONv2ef7v9CSY/LC9pZxKUuYTLBQ=='
+  GetLocationsUrl = 'https://localhost:44330/Location'
 
   constructor( private http: HttpClient) { }
 
-  GetAllLocations(): Observable<Location[]>{
+  GetAllLocations(): Observable<any>{
     console.log('In Get All locations service')
     return this.http.get<Location[]>(this.GetLocationsUrl)
     .pipe(catchError(error=>{

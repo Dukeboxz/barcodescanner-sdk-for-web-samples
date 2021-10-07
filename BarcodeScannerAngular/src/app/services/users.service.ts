@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { User } from './app/Interfaces/User';
+import { User } from '../Interfaces/User';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +23,10 @@ export class UsersService {
 
   HandleError(error : HttpErrorResponse) {
     console.log(error);
+  }
+
+  GetCurrentUserId(): string{
+
+    return 'sjacks'
   }
 }

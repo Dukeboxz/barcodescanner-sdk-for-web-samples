@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row" *ngIf="ShowSelectionButtons">
+        <input type="buttton" class="btn btn-primary" value="Create Receiver" (click)="viewSalePage('NewReceiver')">
+        <input type="buttton" class="btn btn-primary" value="Use Existing Receiver" (click)="viewSalePage('ExistingReceiver')">
+
+    </div>
+    <div class="row">
+        <div *ngIf="ShowContstructNew"  id="CreateNewSaleDiv">
+            <form [formGroup]="newReceiverForm">
+                <div class="form-group">
+                    <label for="receiverName">Name</label>
+                    <input type="text" class="form-control" fromControlName="receiverName" id="receiverName" placeholder="Enter name" />
+                </div>
+                <div class="form-group">
+                    <label for="receiverBuilding">Building</label>
+                    <input type="text" class="form-control" id="receiverBuilding" formControlName="receiverBuilding" placeholder="Enter Building Number" />
+                </div>
+                <div class="form-group">
+                    <label for="receiverStreet">Street</label>
+                    <input type="text" class="form-control" id="receiverStreet" formControlName="receiverStreet" placeholder="Enter Street" />
+                </div>
+                <div class="form-group">
+                    <label for="receiverTown">Town</label>
+                    <input type="text" class="form-control" id="receiverTown" formControlName="receiverTown" placeholder="Enter Town" />
+                </div>
+                <div class="form-group">
+                    <label for="receiverCountry">Country</label>
+                    <input type="text" class="form-control" id="receiverCountry" formControlName="receiverCountry" placeholder="Enter Country" />
+                </div>
+                <div class="form-group">
+                    <label for="receiverPostcode">Postcode</label>
+                    <input type="text" class="form-control" id="receiverPostcode" formControlName="receiverPostcode" placeholder="Enter Postcode" />
+                </div>
+                <div class="form-group">
+                    <input type="button" [disabled]="!newReceiverForm.valid" (click)="CreateNewReceiver()" />
+                </div>
+            </form>
+        </div>
+
+        <div ngIf="ShowUseExisting">
+            <div id="ExistingSelectDiv" >
+                <input type="text" id="receiverSearch" placeholder="receiverName" />
+
+
+                <button class="btn btn-primary" (click)="UseExistingReceiver()" >Start Sale Creation</button>
+            </div>
+        </div>
+       
+    </div>
+
+</div>

@@ -10,6 +10,9 @@ import { LocationService } from 'src/location.service';
 export class DashboardComponent implements OnInit {
 
   public locations: Location[]; 
+  public selectedLocationID: string; 
+  public buttonsDisabled = true; 
+  public returnObject: any; 
 
   constructor(private locationService: LocationService) { }
 
@@ -25,8 +28,21 @@ export class DashboardComponent implements OnInit {
     console.log('In Get Locations');
     this.locationService.GetAllLocations()
     .subscribe(locs => {this.locations = locs; 
-      console.log( this.locations.length)
-      console.log(locs)})
+      
+      console.log("This is locs")
+      this.returnObject=locs; 
+      console.log(this.returnObject)
+      console.log(locs)
+      this.locations = locs.Locations;
+    })
+     
+  }
+
+  OnLocationSelect(locationId: string)
+  {
+    this.selectedLocationID = locationId; 
+    sessionStorage.setItem('locationId', this.selectedLocationID)
+    this.buttonsDisabled = false; 
   }
 
 }
