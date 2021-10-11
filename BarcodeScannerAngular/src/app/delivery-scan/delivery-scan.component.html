@@ -24,7 +24,8 @@
       visible="false"
       playSoundOnScan="true"
       vibrateOnScan="true"
-      scanSettings.enabledSymbologies='["ean13"]'
+      scanSettings.enabledSymbologies='["ean13"]',
+      scanSettings.codeDuplicateFilter ='1000',
       (ready)="onReady()"
       (scan)="onScan($event)">
     </scandit-barcode-picker>

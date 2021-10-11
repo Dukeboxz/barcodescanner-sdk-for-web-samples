@@ -1,0 +1,49 @@
+
+
+    
+    <form [formGroup]="newReceiver" >
+
+        <div class="tp-container">
+            <mat-form-field  appearance="standard">
+                <mat-label>Name:  </mat-label>
+                <input matInput formControlName="name" placeholder="Name">
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+                <mat-label>Builidng: </mat-label>
+                <input matInput formControlName="building" placeholder="building">
+            </mat-form-field>
+        </div>
+        <p>
+            
+           
+        </p>
+        <p>
+            
+        </p>
+        <p>
+            <mat-form-field appearance="standard">
+                <mat-label>Street: </mat-label>
+                <input matInput formControlName="street" placeholder="street">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="standard">
+                <mat-label>Town: </mat-label>
+                <input matInput formControlName="town" placeholder="town">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="standard">
+                <mat-label>Country: </mat-label>
+                <input matInput formControlName="country" placeholder="country2">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="standard">
+                <mat-label>Postcode: </mat-label>
+                <input matInput formControlName="postcode" placeholder="postcode">
+            </mat-form-field>
+        </p>
+        <button mat-raised-button color="primary">Create Receiver</button>
+    </form>
+

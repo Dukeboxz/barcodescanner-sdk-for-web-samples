@@ -1,0 +1,10 @@
+
+    <mat-button-toggle-group>
+        <mat-button-toggle value="new" (change)="onValChange($event.value)" >Create Receiver</mat-button-toggle>
+        <mat-button-toggle value="existing" (change)="onValChange($event.value)">Use Exisitng</mat-button-toggle>
+    </mat-button-toggle-group>
+    <div>
+        <app-existing-receiver *ngIf="existingVisible"></app-existing-receiver>
+        <app-new-receiver *ngIf="createNewVisible" ></app-new-receiver>
+    </div>
+

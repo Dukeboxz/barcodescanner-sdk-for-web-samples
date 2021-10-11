@@ -7,6 +7,7 @@ import { SaleCreateComponent } from './app/sale-create/sale-create.component';
 import { SaleScanComponent } from './app/sale-scan/sale-scan.component';
 import { DeliverySelectComponent } from './app/delivery-select/delivery-select.component';
 import { DeliveryScanComponent } from './app/delivery-scan/delivery-scan.component';
+import { LoanCreateSelectComponent } from './app/Loan/loan-create-select/loan-create-select.component';
 
 
 const routes: Routes =[
@@ -16,6 +17,7 @@ const routes: Routes =[
   {path: 'saleScan', component: SaleScanComponent}, 
   {path: 'deliverySelect', component: DeliverySelectComponent},
   {path: 'deliveryScan', component: DeliveryScanComponent},
+  {path: 'loanCreate', component: LoanCreateSelectComponent},
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
   
 ]

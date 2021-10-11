@@ -11,7 +11,7 @@ export class DashboardComponent implements OnInit {
 
   public locations: Location[]; 
   public selectedLocationID: string; 
-  public buttonsDisabled = true; 
+  public buttonsDisabled = false; 
   public returnObject: any; 
 
   constructor(private locationService: LocationService) { }
@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
 
     console.log('In Dashboad INIT')
-    this.GetLocations(); 
+    //this.GetLocations(); 
     
   }
 

@@ -10,20 +10,20 @@
         <button type="button" class="btn btn-primary" routerLink="/transfer" [disabled]="buttonsDisabled">Create Transfer</button>
     </div>
     <br/>
-    <div class="row">
+    <!-- <div class="row">
         <button type="button" class="btn btn-primary"  [disabled]="buttonsDisabled">Get Product Information</button>
     </div>
-    <br/>
+    <br/> -->
     <div class="row">
         <button type="button" class="btn btn-primary" [routerLink]="['/deliverySelect', {'locationId': 15}]" [disabled]="buttonsDisabled">Book In Delivery</button>
     </div>
     <br/>
     <div class="row">
-        <button type="button" class="btn btn-primary" [disabled]="buttonsDisabled">Create Transfer</button>
+        <button type="button" mat-button color="primary" [disabled]="buttonsDisabled">Create Transfer</button>
     </div>
     <br/>
     <div class="row">
-        <button type="button" class="btn btn-primary" [disabled]="buttonsDisabled">Create Loan</button>
+        <button type="button" class="btn btn-primary"  routerLink="/loanCreate" [disabled]="buttonsDisabled">Create Loan</button>
     </div>
     <br/>
     <div class="row">
