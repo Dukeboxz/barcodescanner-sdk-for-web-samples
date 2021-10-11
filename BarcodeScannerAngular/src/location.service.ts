@@ -8,7 +8,7 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class LocationService {
 
-  GetLocationsUrl = 'https://localhost:44330/Location'
+  GetLocationsUrl = 'http://srvapi01.pslan.net:8085/Location' 
 
   constructor( private http: HttpClient) { }
 
