@@ -13,7 +13,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class DeliveryService {
 
-  DeliveriesUrl = 'https://localhost:44330/' ; 
+  DeliveriesUrl = 'http://srvapi01.pslan.net:8085/' ; 
 
   private currentDeliverySource = new BehaviorSubject<Delivery>(null); 
   currentDelivery = this.currentDeliverySource.asObservable(); 

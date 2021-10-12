@@ -7,6 +7,10 @@
     </div>
     <br/>
     <div class="row">
+        <button type="button" class="btn btn-primary" [routerLink]="['/deliverySelect', {'locationId': 15}]" [disabled]="buttonsDisabled">Book In Delivery</button>
+    </div>
+    <br/>
+    <div class="row">
         <button type="button" class="btn btn-primary" routerLink="/transfer" [disabled]="buttonsDisabled">Create Transfer</button>
     </div>
     <br/>
@@ -14,9 +18,7 @@
         <button type="button" class="btn btn-primary"  [disabled]="buttonsDisabled">Get Product Information</button>
     </div>
     <br/> -->
-    <div class="row">
-        <button type="button" class="btn btn-primary" [routerLink]="['/deliverySelect', {'locationId': 15}]" [disabled]="buttonsDisabled">Book In Delivery</button>
-    </div>
+    
     <br/>
     <div class="row">
         <button type="button" mat-button color="primary" [disabled]="buttonsDisabled">Create Transfer</button>

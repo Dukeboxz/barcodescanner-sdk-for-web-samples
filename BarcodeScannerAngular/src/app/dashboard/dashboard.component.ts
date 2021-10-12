@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
 
     console.log('In Dashboad INIT')
-    //this.GetLocations(); 
+    this.GetLocations(); 
     
   }
 

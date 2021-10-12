@@ -21,11 +21,12 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle'
 
 import { NewReceiverComponent } from './Loan/new-receiver/new-receiver.component';
 import { ExistingReceiverComponent } from './Loan/existing-receiver/existing-receiver.component';
+import { LoginComponent } from './login/login.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, TransferScanComponent, SaleCreateComponent, SaleScanComponent, DeliverySelectComponent, DeliveryScanComponent, LoanCreateSelectComponent,  NewReceiverComponent, ExistingReceiverComponent],
+  declarations: [AppComponent, DashboardComponent, TransferScanComponent, SaleCreateComponent, SaleScanComponent, DeliverySelectComponent, DeliveryScanComponent, LoanCreateSelectComponent,  NewReceiverComponent, ExistingReceiverComponent, LoginComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
