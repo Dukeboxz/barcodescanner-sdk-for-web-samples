@@ -1,6 +1,8 @@
 <div class="container">
-    <div class="logo"></div>
-    <div class="name">Simple Sample</div>
+    <div class="logo">
+
+    </div>
+    
     <div id="description" class="description" *ngIf="showDescription">
       Start the scanner and then aim at a barcode to get the encoded data.
     </div>
@@ -24,30 +26,39 @@
       visible="false"
       playSoundOnScan="true"
       vibrateOnScan="true"
-      scanSettings.enabledSymbologies='["ean13"]',
-      scanSettings.codeDuplicateFilter ='1000',
+      scanSettings.enabledSymbologies='["ean13"]'
+      scanSettings.codeDuplicateFilter ='1000'
       (ready)="onReady()"
       (scan)="onScan($event)">
     </scandit-barcode-picker>
   
-    <button (click)="scanTest()">Test Scan</button>
+   
+    <!-- <button (click)="scanTest()">Test Scan</button> -->
     <div>
       <table class="table" class="table" id="selectedTransactionTable" style="width:100%">
         <tr>
+          
           <th>Product</th>
           <th>Colour</th>
           <th>Size</th>
           <th>Qty</th>
+         
         </tr>
         <tr *ngFor="let item of scannedDeliveryItems">
+         
           <td>{{item.Product}}</td>
           <td>{{item.Colour}}</td>
           <td>{{item.Size}}</td>
           <td>{{item.AcceptQty}}</td>
+         
+          
         </tr>
       </table>
 
       <button class="btn btn-primary" [disabled]="UpdateDiabled" (click)="UpdateDelivery()">BookInDelivery</button>
+      <button mat-flat-button [routerLink]="['/deliverySelect']">Back</button>
+
+
     </div>
   </div>
   

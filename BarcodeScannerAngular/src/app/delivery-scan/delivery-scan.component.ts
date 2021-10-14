@@ -33,9 +33,9 @@ export class DeliveryScanComponent implements OnInit {
   @ViewChild("barcodePicker") barcodePickerElement: ElementRef<HTMLDivElement & { barcodePicker: BarcodePicker }>;
 
   ngOnInit(): void {
-
+    console.log("In delivery select init")
     this.subscription = this.deliveryService.currentDelivery.subscribe(delivery => this.currentDelivery = delivery); 
-
+    console.log("sub set up"); 
     this.GetDeliveryItems(this.currentDelivery.BoxId)
     console.log('Boxid :' + this.currentDelivery.BoxId); 
     console.log(this.deliveryItems)
@@ -138,7 +138,7 @@ export class DeliveryScanComponent implements OnInit {
 
 
     }else{
-      scannedItem.AcceptQty += 1;
+      scannedItem.AcceptQty = 1;
       this.scannedDeliveryItems.push(scannedItem);
       this.UpdateDiabled = false;  
     }
@@ -156,8 +156,7 @@ export class DeliveryScanComponent implements OnInit {
   UpdateDelivery(){
 
     const user = this.userService.GetCurrentUserId(); 
-    console.log("Current Delivery : " , this.currentDelivery); 
-    console.log("delivery loc id: " + this.currentDelivery.LocationId)
+    console.log("user id : ", user)
     
     
 

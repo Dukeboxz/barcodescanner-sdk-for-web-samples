@@ -1,13 +1,19 @@
 <div class="container">
     <div class="row">
         <h4>Choose Location</h4>
+        <!-- <mat-select placeholder="select location" id="locationSelect" (selectionChange)="OnLocationSelect($event.target.value)" >
+            <mat-option value="15">Option 1</mat-option>
+            <mat-option *ngFor="let location of locations" value={{location.LocationId}}>{{location.Name}}</mat-option>
+           
+            
+        </mat-select> -->
         <select name="" id="locationSelect" (change)="OnLocationSelect($event.target.value)" class="browser-default custom-select">
             <option *ngFor="let location of locations" value={{location.LocationId}}>{{location.Name}}</option>
         </select>
     </div>
     <br/>
     <div class="row">
-        <button type="button" class="btn btn-primary" [routerLink]="['/deliverySelect', {'locationId': 15}]" [disabled]="buttonsDisabled">Book In Delivery</button>
+        <button type="button" class="btn btn-primary" [routerLink]="['/deliverySelect']"    [disabled]="buttonsDisabled">Book In Delivery</button>
     </div>
     <br/>
     <div class="row">

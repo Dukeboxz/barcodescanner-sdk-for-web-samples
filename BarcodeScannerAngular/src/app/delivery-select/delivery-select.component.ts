@@ -14,17 +14,15 @@ export class DeliverySelectComponent implements OnInit {
 
   public locationID = "-1"; 
   public deliveries : Delivery[]; 
+  AcceptedDelivery: Delivery; 
   
   constructor( private activatedRoute: ActivatedRoute,private router: Router, private delvieryService: DeliveryService, private userService: UsersService) { }
 
   ngOnInit(): void {
 
     console.log("in delivery ngonit")
-     this.activatedRoute.params.subscribe(params => {
-
-      this.locationID = params['locationId'] ;
-     })
-
+    this.locationID = sessionStorage.getItem('locationId');
+    console.log("Location Id=" + this.locationID)
      this.delvieryService.GetDeliveriesForLocation(Number.parseInt(this.locationID))
      .subscribe(rtrn => {
       console.log(rtrn)
@@ -40,18 +38,31 @@ export class DeliverySelectComponent implements OnInit {
     console.log('selected delivery');
       console.log(delivery)
       this.delvieryService.ChangeCurrentDelivery(delivery); 
-
+      
       this.router.navigate(['/deliveryScan']);
       
   }
 
   AcceptDelivery(delivery:Delivery)
   {
+    this.AcceptedDelivery = delivery; 
       const user = this.userService.GetCurrentUserId(); 
 
       this.delvieryService.AcceptAllOfADelivery(delivery, this.locationID, user)
-      .subscribe(rtrn => {
-        console.log(rtrn);
+      .subscribe({
+        next: res =>{
+          console.log(res);
+         
+              alert("Delivery Updated");
+             
+            location.reload();
+      }, 
+      error: error=> {
+        console.log(error);
+        
+        alert("Error")
+      }
+      
       })
   }
 

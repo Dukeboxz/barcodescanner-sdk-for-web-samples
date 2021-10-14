@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient , HttpHeaders} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
@@ -8,15 +8,24 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class LocationService {
 
-  GetLocationsUrl = 'http://srvapi01.pslan.net:8085/Location' 
+   GetLocationsUrl =  'https://srvapi01.pslan.net:8085/Location' 
 
   constructor( private http: HttpClient) { }
 
+  
+
+
   GetAllLocations(): Observable<any>{
     console.log('In Get All locations service')
-    return this.http.get<Location[]>(this.GetLocationsUrl)
+
+    const headers = new HttpHeaders()
+    .set('content-type', 'application/json')
+    .set('Access-Control-Allow-Origin', '*');
+
+    return this.http.get<Location[]>(this.GetLocationsUrl, {'headers': headers})
     .pipe(catchError(error=>{
-      console.log('caught error'); 
+      console.log('caught error');
+      console.log(error) ;
       return throwError(() => new Error("Failed To Get Locations"))}))
   }
 

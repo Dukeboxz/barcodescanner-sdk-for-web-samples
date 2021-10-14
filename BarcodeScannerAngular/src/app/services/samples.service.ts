@@ -9,7 +9,7 @@ import { Sample } from '../Interfaces/Sample';
 })
 export class SamplesService {
 
-  GetSamplesUrl = 'https://psgetsamplesfromlocation.azurewebsites.net/api/SampleFromBarcode?code=NmjRvGf1Dd3j3SH9raqw3a3GCkiQnKOgvx0g7krTwTd1mb9YJLQRfA=='; 
+  GetSamplesUrl = 'https://srvapi01.pslan.net:8085/' + 'Samples/'; 
   
   constructor( private http: HttpClient) { }
 

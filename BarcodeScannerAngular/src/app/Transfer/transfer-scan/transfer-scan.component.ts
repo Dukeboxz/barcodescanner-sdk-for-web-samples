@@ -1,9 +1,10 @@
-import { Component, ViewChild, ElementRef , OnInit} from "@angular/core";
+import { Component, ViewChild, ElementRef , OnInit, Input} from "@angular/core";
 import * as ScanditSDK from "scandit-sdk";
 import { BarcodePicker, ScanResult } from "scandit-sdk";
 
-import { Sample } from "../Interfaces/Sample";
-import { SamplesService } from "../services/samples.service";
+import { Sample } from "../../Interfaces/Sample";
+import { SamplesService } from "../../services/samples.service";
+import { Location } from "src/app/Interfaces/Location";
 
 @Component({
   selector: 'app-transfer-scan',
@@ -14,7 +15,7 @@ export class TransferScanComponent implements OnInit {
 
   constructor(private sampleService: SamplesService) { }
  
-
+  @Input() toLocation: Location; 
   public scannerReady = false;
   public showButton = false;
   public showDescription = true;

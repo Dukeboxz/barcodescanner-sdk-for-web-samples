@@ -13,7 +13,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class DeliveryService {
 
-  DeliveriesUrl = 'http://srvapi01.pslan.net:8085/' ; 
+  DeliveriesUrl = 'https://srvapi01.pslan.net:8085/' ; 
 
   private currentDeliverySource = new BehaviorSubject<Delivery>(null); 
   currentDelivery = this.currentDeliverySource.asObservable(); 
@@ -35,8 +35,10 @@ export class DeliveryService {
   }
 
   ChangeCurrentDelivery(newDelivery: Delivery){
-
+    console.log("Change current delivery"); 
+    console.log("new delivery: ", newDelivery)
     this.currentDeliverySource.next(newDelivery)
+    console.log("after set new delivery")
   }
 
   GetDeliveryItemByBoxId(boxid: number){
@@ -53,24 +55,27 @@ export class DeliveryService {
 
   AcceptAllOfADelivery(delivery: Delivery, locationID: string, user: string){
 
-    
+    const deliverySelect = {
+      'BoxId': delivery.BoxId, 
+      'Location': locationID,
+      'User' : user
+    };
 
-    const options = {
-      params: [
-        new HttpParams().set('boxId', delivery.BoxId), 
-        new HttpParams().set('location', locationID),
-        new HttpParams().set('user', user)
-       ]
-    }
+    const body = JSON.stringify(deliverySelect); 
+    const headers = { 'content-type': 'application/json'}
+    console.log(body)
 
-    return this.http.patch<any>(this.DeliveriesUrl + 'Delivery/', options)
+    return this.http.post<any>(this.DeliveriesUrl + 'Delivery/', body,{'headers':headers})
     .pipe(catchError(error=>{
+      console.log(error)
       return throwError(()=> new Error("Failed To Get Deliveries"))
     }))
   }
 
   UpdateDeliveryItemsReceived(DeliveryItems: DeliveryItem[], LocationId: string, user: string): Observable<any>
   {
+    console.log("Delivery Items"); 
+    console.log(DeliveryItems);
 
     const retObj: DeliveryReturn ={
         acceptedItems: DeliveryItems, 

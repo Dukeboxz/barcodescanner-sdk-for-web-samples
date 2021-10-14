@@ -13,7 +13,7 @@ export class UsersService {
 
   constructor(private http: HttpClient) { }
 
-  ValidateUser(user: User) : Observable<User>{
+  ValidateUser(user: User) : Observable<any>{
 
     return this.http.post<User>(this.authUserUrl, user )
     .pipe(catchError(error=>{
@@ -26,7 +26,12 @@ export class UsersService {
   }
 
   GetCurrentUserId(): string{
+    let userstring = sessionStorage.getItem('user'); 
+    console.log( userstring)
+    let user = JSON.parse(  sessionStorage.getItem('user')) ;
+    console.log("user object"); 
+    console.log(user); 
 
-    return 'sjacks'
+    return user.userName; 
   }
 }

@@ -7,11 +7,12 @@
               <h5 class="card-title">Box ID: {{delivery.BoxId}}</h5>
               <p class="card-text">Total Qty:  {{delivery.TotalQty}}</p>
               <p class="card-text">Item Count:  {{delivery.ItemCount}}</p>
-              <a (click)="SelectDelivery(delivery)" class="btn btn-primary">Select Delivery</a>
+              <a mat-flat-button (click)="SelectDelivery(delivery)" >Select Delivery Items</a>
               <br/>
-              <a (click)="AcceptDelivery(delivery)" class="btn btn-primary">Accept Delivery</a>
+              <a mat-flat-button (click)="AcceptDelivery(delivery)" c>Accept Full Delivery</a>
             </div>
           </div>
     </div>
    
+    <button mat-flat-button routerLink="/dashboard">Back</button>
 </div>
