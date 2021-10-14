@@ -1,9 +1,5 @@
 <div class="container">
-  <div class="logo"></div>
-  <div class="name">Simple Sample</div>
-  <div id="description" class="description" *ngIf="showDescription">
-    Start the scanner and then aim at a barcode to get the encoded data.
-  </div>
+
 
   <div id="lib-loading" *ngIf="!scannerReady">
     <br />Library is loading, please wait...
@@ -13,7 +9,7 @@
     Start Scanning
   </button>
 
-  <div id="barcode-result" class="result-text">{{ result }}</div>
+  <!-- <div id="barcode-result" class="result-text">{{ result }}</div> -->
 
   <scandit-barcode-picker
     #barcodePicker
@@ -25,6 +21,7 @@
     playSoundOnScan="true"
     vibrateOnScan="true"
     scanSettings.enabledSymbologies='["ean13"]'
+    scanSettings.codeDuplicateFilter ='1000'
     (ready)="onReady()"
     (scan)="onScan($event)">
   </scandit-barcode-picker>
@@ -45,4 +42,6 @@
       </tr>
     </table>
   </div>
+
+  <button mat-raised-button (onclick)="CreateTransfer()" color="primary">Create Transfer</button>
 </div>

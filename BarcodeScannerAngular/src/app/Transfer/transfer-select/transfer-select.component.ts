@@ -20,19 +20,23 @@ export class TransferSelectComponent implements OnInit {
   constructor(private locationService: LocationService) { }
 
   ngOnInit(): void {
+
+    this.GetLocations();
   }
 
   GetLocations(): void
   {
     console.log('In Get Locations');
     this.locationService.GetAllLocations()
-    .subscribe(locs => {this.locations = locs; 
+    .subscribe(locs => {
       
       console.log("This is locs")
       this.returnObject=locs; 
       console.log(this.returnObject)
       console.log(locs)
       this.locations = locs.Locations;
+    
+      console.log(this.locations)
       this.RemoveUserLocFromSelection(); 
     })
      
@@ -41,15 +45,15 @@ export class TransferSelectComponent implements OnInit {
   RemoveUserLocFromSelection(){
 
     this.locations = this.locations.filter(x=> {return x.LocationId != +this.fromLocationId})
+
     console.log(this.locations); 
   }
 
   OnLocationSelect(locationId){
 
     this.FromLocation = this.locations.find(x=> x.LocationId == locationId)
-
-     //Todo:
-     //Send location to child
+    this.showScan = true; 
+     
   }
 
 }
